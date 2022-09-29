@@ -1,0 +1,7 @@
+{
+  "name": "TP_Final_DAM",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
