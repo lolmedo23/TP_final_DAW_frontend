@@ -11,6 +11,18 @@ const routes: Routes = [
     redirectTo: 'home',
     pathMatch: 'full'
   },
+  {
+    path: 'dispositivo/:id',
+    loadChildren: () => import('./components/dispositivo/dispositivo.module').then( m => m.DispositivoPageModule)
+  },
+  {
+    path: 'logRiegos/:id',
+    loadChildren: () => import('./components/logs/logs.module').then( m => m.LogsPageModule)
+  },
+  {
+    path: 'medicion/:id/todas',
+    loadChildren: () => import('./components/mediciones/mediciones.module').then( m => m.MedicionesPageModule)
+  },
 ];
 
 @NgModule({

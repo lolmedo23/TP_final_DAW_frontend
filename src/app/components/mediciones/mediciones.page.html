@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons slot="start">
+          <ion-button routerLink="/dispositivo/{{idDispositivo}}">
+              <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+          </ion-button>
+      </ion-buttons>
+      <ion-title>Mediciones Dispositivo {{idDispositivo}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-margin">
+  <ion-grid class="ion-margin">
+    <ion-row>
+      <ion-col>Id Medicion</ion-col>
+      <ion-col>Id Dispositivo</ion-col>
+      <ion-col>Valor</ion-col>
+      <ion-col>Fecha</ion-col>
+    </ion-row>
+    <ion-row *ngFor="let medicion of listadoMediciones">
+      <ion-col>{{medicion.medicionId}}</ion-col>
+      <ion-col>{{medicion.dispositivoId}}</ion-col>
+      <ion-col>{{medicion.valor}} kPA</ion-col>
+      <ion-col>{{medicion.fecha | date :  "M/d/yy h:mm a" }}</ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
