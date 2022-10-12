@@ -30,11 +30,16 @@
       <ion-col>Estado Valvula</ion-col>
       <ion-col>Fecha</ion-col>
     </ion-row>
-    <ion-row *ngFor="let log of listadoLogs">
-      <ion-col>{{log.logRiegoId}}</ion-col>
-      <ion-col>{{log.electrovalvulaId}}</ion-col>
-      <ion-col>{{log.apertura | estadoElectrovalvula}}</ion-col>
-      <ion-col>{{log.fecha | date :  "M/d/yy h:mm a" }}</ion-col>
+    <ng-container *ngIf="listadoLogs.length" >
+      <ion-row appCambiarColorBackground *ngFor="let log of listadoLogs">
+        <ion-col>{{log.logRiegoId}}</ion-col>
+        <ion-col>{{log.electrovalvulaId}}</ion-col>
+        <ion-col>{{log.apertura | estadoElectrovalvula}}</ion-col>
+        <ion-col>{{log.fecha}}</ion-col>
+      </ion-row>
+    </ng-container>
+    <ion-row>
+      <ion-col *ngIf="!listadoLogs.length" > <ion-fab center middle>NO SE ENCUENTRAN LOGS DISPONIBLES</ion-fab></ion-col>
     </ion-row>
   </ion-grid>
 </ion-content>

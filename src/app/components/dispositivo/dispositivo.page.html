@@ -5,18 +5,18 @@
               <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
           </ion-button>
       </ion-buttons>
-      <ion-title>Dispositivo -</ion-title>
+      <ion-title>Dispositivo {{dispositivo.dispositivoId}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <div>Acá deberia traer mas información del dispositivo y su medida del sensor</div>
-  <div id="highcharts" style="width:100%; height:300px;"></div>
-  <div>
-      "{{dispositivo.ubicacion}}"
-  </div>
+  <div id="highcharts" style="width:100%; height:500px;"></div>
+  <ion-row>
+    <ion-button *ngIf="valvulaCerrada" (click)="actualizarElectroValvula()"> Abrir Electroválvula</ion-button>
+    <ion-button *ngIf="!valvulaCerrada" (click)="actualizarElectroValvula()"> Cerrar Electroválvula</ion-button>
+    <ion-button routerLink="/medicion/{{dispositivo.dispositivoId}}/todas">Ver Mediciones</ion-button>
+    <ion-button routerLink="/logRiegos/{{dispositivo.dispositivoId}}">Ver Logs Riego</ion-button>
+  </ion-row>
 </ion-content>
-<ion-button>Abrir Electroválvula</ion-button>
-<ion-button routerLink="/medicion/{{dispositivo.dispositivoId}}/todas">Ver Mediciones</ion-button>
-<ion-button routerLink="/logRiegos/{{dispositivo.dispositivoId}}">Ver Logs Riego</ion-button>
 
+<script src="https://code.highcharts.com/modules/accessibility.js"></script>

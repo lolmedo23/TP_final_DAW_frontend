@@ -19,9 +19,7 @@ export class DispositivoService {
   }
 
   getDispositivo(id: Number): Promise<Dispositivo>{
-    console.log("ngOnInit dispositivo.page service getDispositivo");
     let aux = this._http.get<Dispositivo>("http://localhost:3000/dispositivos/"+id).toPromise();
-    console.log("ngOnInit dispositivo.page service getDispositivo 2");
     return aux;
   }
 

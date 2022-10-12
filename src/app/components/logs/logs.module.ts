@@ -4,6 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { LogsPageRoutingModule } from './logs-routing.module';
 import { EstadoElectrovalvulaPipe } from '../../pipes/estado-electrovalvula.pipe'
+import { CambiarColorBackgroundDirective } from '../../directivas/cambiar-color-background.directive'
+
 import { LogsPage } from './logs.page';
 
 @NgModule({
@@ -14,6 +16,7 @@ import { LogsPage } from './logs.page';
     LogsPageRoutingModule
   ],
   declarations: [LogsPage,
-                EstadoElectrovalvulaPipe]
+                 EstadoElectrovalvulaPipe,
+                 CambiarColorBackgroundDirective]
 })
 export class LogsPageModule {}

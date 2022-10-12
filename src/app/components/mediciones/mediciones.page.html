@@ -13,15 +13,18 @@
   <ion-grid class="ion-margin">
     <ion-row>
       <ion-col>Id Medicion</ion-col>
-      <ion-col>Id Dispositivo</ion-col>
       <ion-col>Valor</ion-col>
       <ion-col>Fecha</ion-col>
     </ion-row>
-    <ion-row *ngFor="let medicion of listadoMediciones">
-      <ion-col>{{medicion.medicionId}}</ion-col>
-      <ion-col>{{medicion.dispositivoId}}</ion-col>
-      <ion-col>{{medicion.valor}} kPA</ion-col>
-      <ion-col>{{medicion.fecha | date :  "M/d/yy h:mm a" }}</ion-col>
+    <ng-container *ngIf="listadoMediciones.length" >
+      <ion-row appCambiarColorBackground *ngFor="let medicion of listadoMediciones">
+        <ion-col>{{medicion.medicionId}}</ion-col>
+        <ion-col>{{medicion.valor}} kPA</ion-col>
+        <ion-col>{{medicion.fecha | date :  'YYYY-MM-DD THH:mm' }}</ion-col>
+      </ion-row>
+    </ng-container>
+    <ion-row>
+      <ion-col *ngIf="!listadoMediciones.length" > <ion-fab center middle>NO SE ENCUENTRAN MEDICIONES DISPONIBLES</ion-fab></ion-col>
     </ion-row>
   </ion-grid>
 </ion-content>

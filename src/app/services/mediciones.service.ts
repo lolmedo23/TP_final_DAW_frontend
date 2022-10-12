@@ -19,7 +19,8 @@ export class MedicionesService {
     return this._http.get<Medicion>("http://localhost:3000/medicion/"+ id).toPromise();
   }
 
-  agregarMedicion(fecha, valor, dispositivoId: Number){
-    return this._http.get<Medicion>("http://localhost:8000/medicion/agregarMedicion").toPromise();
+  agregarMedicion(medicion: Medicion){
+    return this._http.post("http://localhost:3000/medicion/agregarMedicion",
+            {"fecha":medicion.fecha,"valor":medicion.valor,"dispositivoId":medicion.dispositivoId}).toPromise().then((result)=>{console.log(result)});
   }
 }

@@ -1,8 +1,8 @@
 export class Medicion{
-  private _medicionId: number;
-  private _fecha: string;
-  private _valor: number;
-  private _dispositivoId: number;
+  private _medicionId: Number;
+  private _fecha: String;
+  private _valor: Number;
+  private _dispositivoId: Number;
 
   constructor(medicionId,fecha,valor,dispositivoId){
       this._medicionId=medicionId;
@@ -11,30 +11,30 @@ export class Medicion{
       this._dispositivoId=dispositivoId;
   }
 
-  public get medicionId(): number {
+  public get medicionId(): Number {
       return this._medicionId;
   }
-  public set medicionId(value: number) {
+  public set medicionId(value: Number) {
       this._medicionId = value;
   }
 
-  public get fecha(): string {
+  public get fecha(): String {
       return this._fecha;
   }
-  public set fecha(value: string) {
+  public set fecha(value: String) {
       this.fecha = value;
   }
 
-  public get valor(): number {
+  public get valor(): Number {
       return this._valor;
   }
-  public set valor(value: number) {
+  public set valor(value: Number) {
       this._valor = value;
   }
-  public get dispositivoId(): number {
+  public get dispositivoId(): Number {
     return this._dispositivoId;
   }
-  public set dispositivoId(value: number) {
+  public set dispositivoId(value: Number) {
     this._dispositivoId = value;
   }
 }

@@ -19,7 +19,6 @@ export class MedicionesPage implements OnInit {
 
   ngOnInit() {
     this.dMed.getMediciones(this.idDispositivo).then(listaMediciones=>{
-      console.log("ngOnInit dispositivo.page in getDispositivo");
       this.listadoMediciones=listaMediciones;
     }).catch(err=>{
       console.error('Error al obtener mediciones del Dispositivo id:'+ this.idDispositivo);

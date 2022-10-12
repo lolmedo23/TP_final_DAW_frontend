@@ -4,6 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { MedicionesPageRoutingModule } from './mediciones-routing.module';
 import { MedicionesPage } from './mediciones.page';
+import { CambiarColorBackgroundDirective } from '../../directivas/cambiar-color-background.directive'
+
 
 @NgModule({
   imports: [
@@ -12,6 +14,7 @@ import { MedicionesPage } from './mediciones.page';
     IonicModule,
     MedicionesPageRoutingModule,
   ],
-  declarations: [MedicionesPage]
+  declarations: [MedicionesPage,
+                 CambiarColorBackgroundDirective]
 })
 export class MedicionesPageModule {}

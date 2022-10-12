@@ -1,8 +1,8 @@
 export class Dispositivo{
-    private _dispositivoId: number;
-    private _nombre: string; 
-    private _ubicacion: string;
-    private _electrovalvulaId: number;
+    private _dispositivoId: Number;
+    private _nombre: String;
+    private _ubicacion: String;
+    private _electrovalvulaId: Number;
 
     constructor(dispositivo,nombre,ubicacion,electrovalvulaId){
         this._dispositivoId=dispositivo;
@@ -11,31 +11,31 @@ export class Dispositivo{
         this._electrovalvulaId=electrovalvulaId;
     }
 
-    public get dispositivoId(): number {
+    public get dispositivoId(): Number {
         return this._dispositivoId;
     }
-    public set dispositivoId(value: number) {
+    public set dispositivoId(value: Number) {
         this._dispositivoId = value;
     }
 
-    public get nombre(): string {
+    public get nombre(): String {
         return this._nombre;
     }
-    public set nombre(value: string) {
+    public set nombre(value: String) {
         this._nombre = value;
     }
 
-    public get ubicacion(): string {
+    public get ubicacion(): String {
         return this._ubicacion;
     }
-    public set ubicacion(value: string) {
+    public set ubicacion(value: String) {
         this._ubicacion = value;
     }
-    
-    public get electrovalvulaId(): number {
+
+    public get electrovalvulaId(): Number {
         return this._electrovalvulaId;
     }
-    public set electrovalvulaId(value: number) {
+    public set electrovalvulaId(value: Number) {
         this._electrovalvulaId = value;
     }
 }

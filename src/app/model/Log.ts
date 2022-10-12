@@ -1,8 +1,8 @@
 export class Log{
-  private _logRiegoId: number;
-  private _apertura: number;
-  private _fecha: string;
-  private _electrovalvulaId: number;
+  private _logRiegoId: Number;
+  private _apertura: Number;
+  private _fecha: String;
+  private _electrovalvulaId: Number;
 
   constructor(logRiegoId,apertura,fecha,electrovalvulaId){
       this._logRiegoId=logRiegoId;
@@ -11,31 +11,31 @@ export class Log{
       this._electrovalvulaId=electrovalvulaId;
   }
 
-  public get logRiegoId(): number {
+  public get logRiegoId(): Number {
       return this._logRiegoId;
   }
-  public set logRiegoId(value: number) {
+  public set logRiegoId(value: Number) {
       this._logRiegoId = value;
   }
 
-  public get apertura(): number {
+  public get apertura(): Number {
       return this._apertura;
   }
-  public set apertura(value: number) {
+  public set apertura(value: Number) {
       this._apertura = value;
   }
 
-  public get fecha(): string {
+  public get fecha(): String {
     return this._fecha;
   }
-  public set fecha(value: string) {
+  public set fecha(value: String) {
     this.fecha = value;
   }
 
-  public get electrovalvulaId(): number {
+  public get electrovalvulaId(): Number {
     return this._electrovalvulaId;
   }
-  public set electrovalvulaId(value: number) {
+  public set electrovalvulaId(value: Number) {
     this._electrovalvulaId = value;
   }
 }
