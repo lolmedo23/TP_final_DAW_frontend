@@ -21,36 +21,33 @@ require('highcharts/modules/solid-gauge')(Highcharts);
 export class DispositivoPage implements OnInit {
 
   public dispositivo:Dispositivo;
-  public medicion:Medicion;
+  //public medicion:Medicion;
   public valvulaCerrada:boolean;
   public myChart;
   private chartOptions;
   private chartTitle:String='';
-  private valorObtenido:Number=0;
+  public medicion:Medicion = new Medicion(0,'',0,0);
+  public idDispositivo;
   constructor(private router:ActivatedRoute,
               private dServ:DispositivoService,
               private mServ:MedicionesService,
               private lServ:LogsService) {
 
-    this.dispositivo =new Dispositivo(0,'','',0);
-    this.medicion= new Medicion(0,'',0,0);
     //por defecto la valvula se considera cerrada
     this.valvulaCerrada = true;
-    var idDispositivo = Number(this.router.snapshot.paramMap.get('id'));
-    this.getDispositivo(idDispositivo);
-    this.chartTitle=this.dispositivo.nombre
-    this.getMedicion(idDispositivo);
+    this.idDispositivo = Number(this.router.snapshot.paramMap.get('id'));
+    this.getDispositivo(this.idDispositivo);
+    this.getMedicion(this.idDispositivo);
   }
 
   async ngOnInit() {
   }
 
   ionViewWillEnter(){
-    this.generarChart();
   }
 
   ionViewDidEnter() {
-
+    this.generarChart();
   }
 
   async getDispositivo(idDispositivo:Number){
@@ -63,21 +60,22 @@ export class DispositivoPage implements OnInit {
   }
 
   async getMedicion(idDispositivo:Number){
+    //debugger;
     try{
       this.medicion = await this.mServ.getMedicion(idDispositivo);
-      this.actualizarChart(this.medicion.valor);
+      this.actualizarChart();
       console.log(this.medicion)
     }catch(error){
       console.log(error);
     }
   }
 
-  actualizarChart(valor: Number){
-    this.valorObtenido=valor;
+  actualizarChart(){
+    //this.valorObtenido=valor;
     //llamo al update del chart para refrescar y mostrar el nuevo valor
     this.myChart.update({series: [{
       name: 'kPA',
-      data: [valor],
+      data: [Number(this.medicion.valor)],
       tooltip: {
           valueSuffix: ' kPA'
       }
@@ -85,20 +83,17 @@ export class DispositivoPage implements OnInit {
   }
 
   //Al cerrar electrovalvula, almacenar log e insertar medicion. Al abrir solo generar log
-  actualizarElectroValvula(){
+  async actualizarElectroValvula(){
     //Cambiar estado Electrovalvula
     this.valvulaCerrada = !this.valvulaCerrada;
-    console.log(moment().format('YYYY-MM-DD hh:mm:ss'))
-    var auxLog: Log = new Log(0, Number(this.valvulaCerrada), moment().format('YYYY-MM-DD hh:mm:ss'), this.dispositivo.electrovalvulaId);
-    this.lServ.agregarLog(auxLog)
+    this.lServ.agregarLog(new Log(0, Number(this.valvulaCerrada), moment().format('YYYY-MM-DD hh:mm:ss'), this.dispositivo.electrovalvulaId))
     if(this.valvulaCerrada){
       //generar ramdom medicion anterior
       var randomMedicion = this.randomInteger(0,90)
       var auxMedicion: Medicion = new Medicion(0, moment().format('YYYY-MM-DD hh:mm:ss'), randomMedicion, this.dispositivo.dispositivoId);
-      console.log(moment().format('YYYY-MM-DD hh:mm:ss'))
-      this.mServ.agregarMedicion(auxMedicion);
+      await this.mServ.agregarMedicion(auxMedicion);
     }
-    this.actualizarChart(this.medicion.valor);
+    await this.getMedicion(this.dispositivo.dispositivoId)
   }
 
   randomInteger(min, max) {
@@ -106,6 +101,7 @@ export class DispositivoPage implements OnInit {
   }
 
   generarChart() {
+    //debugger;
     this.chartOptions={
       chart: {
           type: 'gauge',
@@ -115,7 +111,7 @@ export class DispositivoPage implements OnInit {
           plotShadow: false
         }
         ,title: {
-          text: this.chartTitle
+          text: String(this.chartTitle)
         }
 
         ,credits:{enabled:false}
@@ -163,7 +159,7 @@ export class DispositivoPage implements OnInit {
     ,
     series: [{
         name: 'kPA',
-        data: [Number(this.valorObtenido)],
+        data: [Number(this.medicion.valor)],
         tooltip: {
             valueSuffix: ' kPA'
         }

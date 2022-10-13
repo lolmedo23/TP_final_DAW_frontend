@@ -5,7 +5,7 @@
               <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
           </ion-button>
       </ion-buttons>
-      <ion-title>Dispositivo {{dispositivo.dispositivoId}}</ion-title>
+      <ion-title>Dispositivo {{idDispositivo}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -14,8 +14,8 @@
   <ion-row>
     <ion-button *ngIf="valvulaCerrada" (click)="actualizarElectroValvula()"> Abrir Electroválvula</ion-button>
     <ion-button *ngIf="!valvulaCerrada" (click)="actualizarElectroValvula()"> Cerrar Electroválvula</ion-button>
-    <ion-button routerLink="/medicion/{{dispositivo.dispositivoId}}/todas">Ver Mediciones</ion-button>
-    <ion-button routerLink="/logRiegos/{{dispositivo.dispositivoId}}">Ver Logs Riego</ion-button>
+    <ion-button routerLink="/medicion/{{idDispositivo}}/todas">Ver Mediciones</ion-button>
+    <ion-button routerLink="/logRiegos/{{idDispositivo}}">Ver Logs Riego</ion-button>
   </ion-row>
 </ion-content>
 

@@ -20,7 +20,7 @@
       <ion-row appCambiarColorBackground *ngFor="let medicion of listadoMediciones">
         <ion-col>{{medicion.medicionId}}</ion-col>
         <ion-col>{{medicion.valor}} kPA</ion-col>
-        <ion-col>{{medicion.fecha | date :  'YYYY-MM-DD THH:mm' }}</ion-col>
+        <ion-col>{{medicion.fecha | date: 'dd/MM/yyyy hh:mm' }}</ion-col>
       </ion-row>
     </ng-container>
     <ion-row>

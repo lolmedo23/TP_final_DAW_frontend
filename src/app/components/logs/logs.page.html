@@ -35,7 +35,7 @@
         <ion-col>{{log.logRiegoId}}</ion-col>
         <ion-col>{{log.electrovalvulaId}}</ion-col>
         <ion-col>{{log.apertura | estadoElectrovalvula}}</ion-col>
-        <ion-col>{{log.fecha}}</ion-col>
+        <ion-col>{{log.fecha | date: 'dd/MM/yyyy hh:mm'}}</ion-col>
       </ion-row>
     </ng-container>
     <ion-row>

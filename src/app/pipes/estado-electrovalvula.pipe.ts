@@ -5,7 +5,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class EstadoElectrovalvulaPipe implements PipeTransform {
 
-  transform(value: number): string {
+  transform(value: Number): String {
     var valueValvula;
     return (value?"Abierta":"Cerrada");
     }
