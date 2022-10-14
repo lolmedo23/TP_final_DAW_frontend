@@ -35,13 +35,15 @@ export class DispositivoPage implements OnInit {
     //por defecto la valvula se considera cerrada
     this.valvulaCerrada = true;
     this.idDispositivo = Number(this.router.snapshot.paramMap.get('id'));
+
   }
 
   ngOnInit() {
-    this.generarChart();
+
   }
 
   ionViewWillEnter(){
+    this.generarChart();
   }
 
   ionViewDidEnter() {
