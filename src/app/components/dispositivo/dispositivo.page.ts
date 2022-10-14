@@ -24,7 +24,6 @@ export class DispositivoPage implements OnInit {
   public valvulaCerrada:boolean;
   public myChart;
   private chartOptions;
-  private chartTitle:String='';
   public medicion:Medicion = new Medicion(0,'',0,0);
   public idDispositivo;
 
@@ -36,8 +35,6 @@ export class DispositivoPage implements OnInit {
     //por defecto la valvula se considera cerrada
     this.valvulaCerrada = true;
     this.idDispositivo = Number(this.router.snapshot.paramMap.get('id'));
-    //this.getDispositivo(this.idDispositivo);
-    //this.getMedicion(this.idDispositivo);
   }
 
   ngOnInit() {
@@ -55,18 +52,17 @@ export class DispositivoPage implements OnInit {
   async getDispositivo(idDispositivo:Number){
     try{
       this.dispositivo = await this.dServ.getDispositivo(idDispositivo);
-      this.chartTitle = this.dispositivo.nombre
+      this.myChart.setTitle({text: this.dispositivo.nombre});
+      this.myChart.redraw();
     }catch(error){
       console.log(error);
     }
   }
 
   async getMedicion(idDispositivo:Number){
-    //debugger;
     try{
       this.medicion = await this.mServ.getMedicion(idDispositivo);
       this.actualizarChart();
-      console.log(this.medicion)
     }catch(error){
       console.log(error);
     }
@@ -102,7 +98,6 @@ export class DispositivoPage implements OnInit {
   }
 
   generarChart() {
-    //debugger;
     this.chartOptions={
       chart: {
           type: 'gauge',
@@ -113,7 +108,8 @@ export class DispositivoPage implements OnInit {
         }
         ,accessibility: {enabled:false}
         ,title: {
-          text: String(this.chartTitle)
+          enabled: true,
+          text:''
         }
 
         ,credits:{enabled:false}
@@ -169,5 +165,6 @@ export class DispositivoPage implements OnInit {
 
     };
     this.myChart = Highcharts.chart('highcharts', this.chartOptions );
+    //this.myChart.redraw();
   }
 }

@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
       <ion-buttons slot="start">
-          <ion-button routerLink="/">
+          <ion-button routerLink="/home" routerDirection="root">
               <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
           </ion-button>
       </ion-buttons>
@@ -9,14 +9,31 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content >
+
   <div id="highcharts" style="width:100%; height:500px;"></div>
-  <ion-row>
-    <ion-button *ngIf="valvulaCerrada" (click)="actualizarElectroValvula()"> Abrir Electroválvula</ion-button>
-    <ion-button *ngIf="!valvulaCerrada" (click)="actualizarElectroValvula()"> Cerrar Electroválvula</ion-button>
-    <ion-button routerLink="/medicion/{{idDispositivo}}/todas">Ver Mediciones</ion-button>
-    <ion-button routerLink="/logRiegos/{{idDispositivo}}">Ver Logs Riego</ion-button>
+      <ion-grid>
+        <ion-row>
+          <ion-col >
+      <ion-button expand="full" *ngIf="valvulaCerrada" (click)="actualizarElectroValvula()"> Abrir Electroválvula</ion-button>
+      <ion-button expand="full" *ngIf="!valvulaCerrada" (click)="actualizarElectroValvula()"> Cerrar Electroválvula</ion-button>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+      <ion-button expand="full" routerLink="/medicion/{{idDispositivo}}/todas">Ver Mediciones</ion-button>
+    </ion-col>
   </ion-row>
+<ion-row>
+        <ion-col>
+    <ion-button expand="full" routerLink="/logRiegos/{{idDispositivo}}">Ver Logs Riego</ion-button>
+  </ion-col>
+</ion-row>
+
+      </ion-grid>
+
+
 </ion-content>
 
-<script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
+

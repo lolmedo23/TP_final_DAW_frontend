@@ -12,7 +12,7 @@ export class CambiarColorBackgroundDirective {
   }
 
   @HostListener('mouseenter') onMouseEnter(){
-    this.cambiar('blue')
+    this.cambiar('silver')
   }
   @HostListener('mouseleave') onMouseLeave(){
     this.cambiar('')
