@@ -20,14 +20,14 @@ require('highcharts/modules/solid-gauge')(Highcharts);
 })
 export class DispositivoPage implements OnInit {
 
-  public dispositivo:Dispositivo;
-  //public medicion:Medicion;
+  public dispositivo:Dispositivo = new Dispositivo(0,'','',0);
   public valvulaCerrada:boolean;
   public myChart;
   private chartOptions;
   private chartTitle:String='';
   public medicion:Medicion = new Medicion(0,'',0,0);
   public idDispositivo;
+
   constructor(private router:ActivatedRoute,
               private dServ:DispositivoService,
               private mServ:MedicionesService,
@@ -36,18 +36,20 @@ export class DispositivoPage implements OnInit {
     //por defecto la valvula se considera cerrada
     this.valvulaCerrada = true;
     this.idDispositivo = Number(this.router.snapshot.paramMap.get('id'));
-    this.getDispositivo(this.idDispositivo);
-    this.getMedicion(this.idDispositivo);
+    //this.getDispositivo(this.idDispositivo);
+    //this.getMedicion(this.idDispositivo);
   }
 
-  async ngOnInit() {
+  ngOnInit() {
+    this.generarChart();
   }
 
   ionViewWillEnter(){
   }
 
   ionViewDidEnter() {
-    this.generarChart();
+    this.getDispositivo(this.idDispositivo);
+    this.getMedicion(this.idDispositivo);
   }
 
   async getDispositivo(idDispositivo:Number){
@@ -71,7 +73,6 @@ export class DispositivoPage implements OnInit {
   }
 
   actualizarChart(){
-    //this.valorObtenido=valor;
     //llamo al update del chart para refrescar y mostrar el nuevo valor
     this.myChart.update({series: [{
       name: 'kPA',
@@ -108,8 +109,9 @@ export class DispositivoPage implements OnInit {
           plotBackgroundColor: null,
           plotBackgroundImage: null,
           plotBorderWidth: 0,
-          plotShadow: false
+          plotShadow: false,
         }
+        ,accessibility: {enabled:false}
         ,title: {
           text: String(this.chartTitle)
         }
