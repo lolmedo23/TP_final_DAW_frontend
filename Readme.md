@@ -1,3 +1,5 @@
+### TP Desarrollo de aplicaciones multiplataforma.
+
 El codigo de este repositorio es el desarrollo del frontend del trabajo final de la materia Desarrollo de aplicaciones multiplataforma. 
 El enunciado se encuentra en el archivo Trabajo Práctico Desarrollo de Aplicaciones Multiplataforma.pdf
 Desde la UI podra navegar en diferentes dispositivos obteniendo valores de la ultima medicion de humedad para el dispositivo.
@@ -8,8 +10,9 @@ El proyecto se encuentra en dos repositorios
 para descargar el backend, el repositorio es https://github.com/lolmedo23/TP_Final_DAW.git y para descargar el prontend el repositorio es https://github.com/lolmedo23/TP_final_DAW_frontend.git
 
 
-Pasos para ejecutar el proyecto
+### Pasos para ejecutar el proyecto
 
+### Descargar el código
 generar una carpeta con el nombre backend 
         >mkdir backend
 y dentro de ella 
@@ -28,6 +31,9 @@ ingresar a la carpeta frontend
 > cd frontend
 clonar el repositorio
 git clone https://github.com/lolmedo23/TP_final_DAW_frontend.git
+
+### Ejecutar la aplicación 
+
 ingresar a la carpeta del proyecto 
 >cd TP_final_DAW_frontend/
 cambiar al branch master
@@ -42,7 +48,7 @@ para ver en formato Androir y ios
 
 
 
-Detalle API
+### Detalle API
 
 Obtener todos los dispositivos
     http://localhost:3000/dispositivos
